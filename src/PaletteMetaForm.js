@@ -9,7 +9,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 
 export class PaletteMetaForm extends Component {
   state = {
-    open: false,
+    open: true,
     newPaletteName: ""
   };
 
@@ -30,27 +30,22 @@ export class PaletteMetaForm extends Component {
 
     return (
       <div>
-        <Button
-          variant="outlined"
-          color="primary"
-          onClick={this.handleClickOpen}
-        >
-          Open form dialog
-        </Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              To subscribe to this website, please enter your email address
-              here. We will send updates occasionally.
-            </DialogContentText>
-            <ValidatorForm
-              onSubmit={() => this.props.handleSubmit(newPaletteName)}
-            >
+          <DialogTitle id="form-dialog-title">
+            Choose a Palette Name
+          </DialogTitle>
+          <ValidatorForm
+            onSubmit={() => this.props.handleSubmit(newPaletteName)}
+          >
+            <DialogContent>
+              <DialogContentText>
+                Please enter a name for your palette.
+              </DialogContentText>
+
               <TextValidator
                 name="newPaletteName"
                 label="Palette Name"
@@ -61,20 +56,18 @@ export class PaletteMetaForm extends Component {
                   "Enter Palette Name",
                   "Palette Name Already Used"
                 ]}
+                fullWidth
               />
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.handleClose} color="primary">
+                Cancel
+              </Button>
               <Button variant="contained" color="primary" type="submit">
                 Save Palette
               </Button>
-            </ValidatorForm>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={this.handleClose} color="primary">
-              Subscribe
-            </Button>
-          </DialogActions>
+            </DialogActions>
+          </ValidatorForm>
         </Dialog>
       </div>
     );
