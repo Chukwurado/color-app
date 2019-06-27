@@ -11,6 +11,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Button from "@material-ui/core/Button";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 
+import PaletteMetaForm from "./PaletteMetaForm";
+
 const drawerWidth = 400;
 
 const styles = theme => ({
@@ -60,13 +62,8 @@ export class PaletteFormNav extends Component {
     );
   };
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
   render() {
-    const { classes, open } = this.props;
-    const { newPaletteName } = this.state;
+    const { classes, open, handleSubmit } = this.props;
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -91,24 +88,7 @@ export class PaletteFormNav extends Component {
             </Typography>
           </Toolbar>
           <div className={classes.navBtn}>
-            <ValidatorForm
-              onSubmit={() => this.props.handleSubmit(newPaletteName)}
-            >
-              <TextValidator
-                name="newPaletteName"
-                label="Palette Name"
-                value={this.state.newPaletteName}
-                onChange={this.handleChange}
-                validators={["required", "isPaletteNameUnique"]}
-                errorMessages={[
-                  "Enter Palette Name",
-                  "Palette Name Already Used"
-                ]}
-              />
-              <Button variant="contained" color="primary" type="submit">
-                Save Palette
-              </Button>
-            </ValidatorForm>
+            <PaletteMetaForm handleSubmit={handleSubmit} />
             <Link to="/">
               <Button variant="contained" color="secondary">
                 Go Back
