@@ -10,43 +10,47 @@ import { Picker } from "emoji-mart";
 import "emoji-mart/css/emoji-mart.css";
 export class PaletteMetaForm extends Component {
   state = {
-    open: true,
+    stage: "form",
     newPaletteName: ""
-  };
-
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
   };
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  render() {
-    const { newPaletteName, open } = this.state;
+  showEmojiPicker = () => {
+    this.setState({
+      stage: "emoji"
+    });
+  };
 
+  savePalette = emoji => {
+    const newPalette = {
+      paletteName: this.state.newPaletteName,
+      emoji: emoji.native
+    };
+    this.props.handleSubmit(newPalette);
+  };
+  render() {
     return (
       <div>
+        <Dialog open={this.state.stage === "emoji"}>
+          <Picker onSelect={this.savePalette} title="Pick a Palette Emoji" />
+        </Dialog>
         <Dialog
-          open={open}
+          open={this.state.stage === "form"}
           onClose={this.props.hideForm}
           aria-labelledby="form-dialog-title"
         >
           <DialogTitle id="form-dialog-title">
             Choose a Palette Name
           </DialogTitle>
-          <ValidatorForm
-            onSubmit={() => this.props.handleSubmit(newPaletteName)}
-          >
+          <ValidatorForm onSubmit={this.showEmojiPicker}>
             <DialogContent>
               <DialogContentText>
                 Please enter a name for your palette.
               </DialogContentText>
-              <Picker />
+
               <TextValidator
                 name="newPaletteName"
                 label="Palette Name"
