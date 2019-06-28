@@ -32,13 +32,14 @@ const styles = theme => ({
   drawerHeader: {
     display: "flex",
     alignItems: "center",
+    width: "100%",
     padding: "0 8px",
     ...theme.mixins.toolbar,
     justifyContent: "flex-end"
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    padding: 0,
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
