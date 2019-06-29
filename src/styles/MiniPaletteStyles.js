@@ -50,7 +50,6 @@ export default {
     top: "0px",
     padding: "10px",
     zIndex: 10,
-    opacity: 0,
-    transition: "all 3s ease-in-out"
+    opacity: 0
   }
 };
