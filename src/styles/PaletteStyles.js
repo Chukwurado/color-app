@@ -3,7 +3,10 @@ export default {
     height: "100vh",
     display: "flex",
     flexDirection: "column",
-    overflow: "hidden"
+    overflow: "hidden",
+    "@media (max-width: 600px)": {
+      overflow: "auto"
+    }
   },
   colors: {
     height: " 90%"
