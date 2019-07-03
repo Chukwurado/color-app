@@ -13,6 +13,7 @@ import { arrayMove } from "react-sortable-hoc";
 import ColorPickerForm from "./ColorPickerForm";
 import DraggableColorList from "./DraggableColorList";
 import PaletteFormNav from "./PaletteFormNav";
+import seedColors from "./seedColors";
 
 const drawerWidth = 400;
 
@@ -77,7 +78,7 @@ class NewPaletteForm extends Component {
   };
   state = {
     open: false,
-    colors: this.props.palettes[0].colors
+    colors: seedColors[0].colors
   };
 
   componentDidMount = () => {

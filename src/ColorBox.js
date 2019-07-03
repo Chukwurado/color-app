@@ -13,7 +13,6 @@ export class ColorBox extends Component {
     this.setState({ copied: true }, () =>
       setTimeout(() => this.setState({ copied: false }), 1500)
     );
-    //this.setState({ copied: true });
   };
   render() {
     const {
@@ -25,8 +24,7 @@ export class ColorBox extends Component {
       classes
     } = this.props;
     const { copied } = this.state;
-    // const isDarkColor = chroma(background).luminance() <= 0.1;
-    // const isLightColor = chroma(background).luminance() >= 0.5;
+
     return (
       <CopyToClipboard text={background} onCopy={this.changeCopyState}>
         <div style={{ background }} className={classes.ColorBox}>

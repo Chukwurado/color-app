@@ -64,7 +64,7 @@ class PaletteList extends Component {
                 <CSSTransition key={palette.id} classNames="fade" timeout={500}>
                   <MiniPalette
                     {...palette}
-                    handleClick={() => this.goToPalette(palette.id)}
+                    handleClick={this.goToPalette}
                     // handleDelete={this.props.deletePalette}
                     toggleDialog={this.toggleDialog}
                     key={palette.id}
@@ -77,7 +77,7 @@ class PaletteList extends Component {
         </div>
         <Dialog
           open={openDeleteDialogue}
-          aria-labelledBy="delete-dialog-title"
+          aria-labelledby="delete-dialog-title"
           onClose={this.toggleDialog}
         >
           <DialogTitle id="delete-dialog-title" onClose={this.toggleDialog}>
