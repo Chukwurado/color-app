@@ -8,6 +8,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import CloseIcon from "@material-ui/icons/Close";
 import { withStyles } from "@material-ui/styles";
 import "rc-slider/assets/index.css";
+import sizes from "./styles/sizes";
 
 const styles = {
   Navbar: {
@@ -27,6 +28,9 @@ const styles = {
     "& a": {
       textDecoration: "none",
       color: "black"
+    },
+    [sizes.down("xs")]: {
+      display: "none"
     }
   },
   slider: {
@@ -48,6 +52,9 @@ const styles = {
       height: "13px",
       marginTop: "-3px",
       marginLeft: "-7px"
+    },
+    [sizes.down("xs")]: {
+      width: "150px"
     }
   },
   selectContainer: {
